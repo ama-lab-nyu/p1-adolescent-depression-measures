@@ -132,5 +132,6 @@ The README will be updated as scripts, outputs, and manuscript materials are add
 - [Alice (Peiran) Wang](mailto:pw1279@nyu.edu)
 - [Helen Liang, MS](mailto:hjl9111@nyu.edu)
 - [Susan Chandraganti](mailto:svc2047@nyu.edu)
+- [Vatsala Tiwari](mailto:vt2309@nyu.edu)
 
 
