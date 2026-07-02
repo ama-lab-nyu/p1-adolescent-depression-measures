@@ -170,7 +170,7 @@ table(datapre$race_eth, useNA = "ifany")
 # Create parental education variable
 datapre <- datapre %>%
   mutate(
-    edu = case_when(
+    mother_edu = case_when(
       H1RM1 %in% c(1, 2, 10) ~ 1,
       H1RM1 %in% c(3, 4, 5)  ~ 2,
       H1RM1 %in% c(6, 7)     ~ 3,
@@ -178,8 +178,19 @@ datapre <- datapre %>%
       TRUE ~ NA_real_
     ),
     
+    father_edu = case_when(
+      H1RF1 %in% c(1, 2, 10) ~ 1,
+      H1RF1 %in% c(3, 4, 5)  ~ 2,
+      H1RF1 %in% c(6, 7)     ~ 3,
+      H1RF1 %in% c(8, 9)     ~ 4,
+      TRUE ~ NA_real_
+    ),
+    
+    edu_n = pmax(mother_edu, father_edu, na.rm = TRUE),
+    edu_n = ifelse(is.infinite(edu_n), NA, edu_n),
+    
     edu = factor(
-      edu,
+      edu_n,
       levels = 1:4,
       labels = c(
         "Less than high school",
@@ -303,7 +314,7 @@ range(datapre$Age, na.rm = TRUE)
 ############################################################
 # Final Cleaned Dataset
 ############################################################
-# Final dataset (NAs incl.)
+# Final dataset before complete-case restriction
 final0 <- datapre %>% 
   transmute(
     cesd_full_score,
@@ -312,6 +323,7 @@ final0 <- datapre %>%
     gender = as.numeric(bio_sex),
     race_eth = as.numeric(race_eth),
     fam_struct = as.numeric(fam_struct),
+    edu = as.numeric(edu),
     school_connect,
     peer_support = as.numeric(H1PR4),
     age = Age
@@ -321,41 +333,100 @@ dim(final0)
 names(final0)
 head(final0)
 
-# Final dataset (no NAs)
-final <- final0 %>% 
-  drop_na(
-    cesd_full_score,
-    brief_screener_score,
-    single_item_depression,
-    gender,
-    race_eth,
-    fam_struct,
-    school_connect,
-    peer_support,
-    age 
+############################################################
+# Sequential Complete-Case Restrictions
+############################################################
+n_original <- nrow(final0)
+
+sample_flow <- tibble(
+  step_number = 0,
+  restriction = "Start with Week 1 constructed-measures dataset",
+  n_before = n_original,
+  n_after = n_original,
+  n_removed_at_step = 0,
+  percent_removed_at_step = 0,
+  percent_original_remaining = 100,
+  percent_original_removed_total = 0
+)
+
+add_step <- function(data, step_number, restriction, varname, n_original) {
+  n_before <- nrow(data)
+  
+  data_after <- data %>%
+    filter(!is.na(.data[[varname]]))
+  
+  n_after <- nrow(data_after)
+  n_removed <- n_before - n_after
+  
+  step_row <- tibble(
+    step_number = step_number,
+    restriction = restriction,
+    n_before = n_before,
+    n_after = n_after,
+    n_removed_at_step = n_removed,
+    percent_removed_at_step = 100 * n_removed / n_before,
+    percent_original_remaining = 100 * n_after / n_original,
+    percent_original_removed_total = 100 * (n_original - n_after) / n_original
   )
+  
+  list(data = data_after, step = step_row)
+}
+
+analytic_step <- final0
+
+res <- add_step(analytic_step, 1, "Complete gender", "gender", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 2, "Complete race/ethnicity", "race_eth", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 3, "Complete family structure", "fam_struct", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 4, "Complete resident parent education", "edu", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 5, "Complete school connectedness", "school_connect", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 6, "Complete peer social support", "peer_support", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 7, "Complete computed age", "age", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 8, "Complete full modified CES-D score", "cesd_full_score", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 9, "Complete four-item brief screener score", "brief_screener_score", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+res <- add_step(analytic_step, 10, "Complete single depressed-mood item", "single_item_depression", n_original)
+analytic_step <- res$data
+sample_flow <- bind_rows(sample_flow, res$step)
+
+final <- analytic_step
 
 dim(final)
 names(final)
 head(final)
 # view(final)
 
-# Output final datasets (NAs incl. and no NAs)
-# write.xlsx(
-#   final0,
-#   file = "data/p2_final_dataset_NAs.xlsx",
-#   rowNames = FALSE
-# )
-
-write.xlsx(
-  final,
-  file = "outputs/02_build_sample_outputs.xlsx",
-  rowNames = FALSE
-)
-
 ############################################################
 # Final Data Check
 ############################################################
+# Sample-flow table
+sample_flow
+
 # Sample size before complete-case restriction
 nrow(final0)
 
@@ -372,4 +443,72 @@ nrow(final0) - nrow(final)
 colSums(is.na(final0))
 colSums(is.na(final))
 
-# Missing data rate is low (<5%), therefore complete-case analysis is unlikely to substantially affect study results.
+# Decision rule check: flag if more than 25% of original sample removed
+decision_rule_check <- tibble(
+  original_n = nrow(final0),
+  final_n = nrow(final),
+  total_removed = nrow(final0) - nrow(final),
+  percent_removed = 100 * (nrow(final0) - nrow(final)) / nrow(final0),
+  flag_more_than_25_percent_removed =
+    ifelse(percent_removed > 25, "FLAG", "OK")
+)
+
+decision_rule_check
+
+# Outcome missingness checks
+outcome_missingness <- final0 %>%
+  summarise(
+    cesd_full_score_missing = sum(is.na(cesd_full_score)),
+    brief_screener_score_missing = sum(is.na(brief_screener_score)),
+    single_item_depression_missing = sum(is.na(single_item_depression))
+  )
+
+outcome_missingness
+
+# Predictor/covariate missingness checks
+predictor_missingness <- final0 %>%
+  summarise(
+    gender_missing = sum(is.na(gender)),
+    race_eth_missing = sum(is.na(race_eth)),
+    fam_struct_missing = sum(is.na(fam_struct)),
+    edu_missing = sum(is.na(edu)),
+    school_connect_missing = sum(is.na(school_connect)),
+    peer_support_missing = sum(is.na(peer_support)),
+    age_missing = sum(is.na(age))
+  )
+
+predictor_missingness
+
+# Age checks
+age_checks <- final0 %>%
+  summarise(
+    n = n(),
+    age_missing = sum(is.na(age)),
+    age_min = min(age, na.rm = TRUE),
+    age_max = max(age, na.rm = TRUE),
+    age_mean = mean(age, na.rm = TRUE),
+    age_sd = sd(age, na.rm = TRUE)
+  )
+
+age_checks
+
+############################################################
+# Save Outputs
+############################################################
+write.xlsx(
+  final,
+  file = "outputs/02_build_sample_outputs.xlsx",
+  rowNames = FALSE
+)
+
+write.xlsx(
+  list(
+    sample_flow = sample_flow,
+    decision_rule_check = decision_rule_check,
+    outcome_missingness = outcome_missingness,
+    predictor_missingness = predictor_missingness,
+    age_checks = age_checks
+  ),
+  file = "outputs/02_build_sample_qc_outputs.xlsx",
+  rowNames = FALSE
+)
