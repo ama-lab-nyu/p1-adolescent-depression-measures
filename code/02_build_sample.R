@@ -57,7 +57,7 @@ datapre <- datapre %>%
   
   # Parental education
   mutate(
-    H1RM1 = ifelse(H1RM1 %in% c(1:12),
+    H1RM1 = ifelse(H1RM1 %in% c(1:12), # 1:10
                    H1RM1,
                    NA),
     
@@ -70,7 +70,7 @@ datapre <- datapre %>%
   mutate(
     across(
       H1HR3A:H1HR3T,
-      ~ ifelse(.x %in% 1:95, .x, NA)
+      ~ ifelse(.x %in% 1:95, .x, NA)  # you only need codes 11 and 14
     )
   ) %>%
   
@@ -264,12 +264,12 @@ table(datapre$father_present, useNA = "ifany")
 ############################################################
 # School Connectedness
 ############################################################
-# Compute 4-item mean
+# Compute 4-item mean   
 datapre <- datapre %>%
   mutate(
     school_connect = rowMeans(
       select(., H1ED19, H1ED20, H1ED22, H1ED24),
-      na.rm = FALSE
+      na.rm = FALSE  ## use available data
     )
   )
 
