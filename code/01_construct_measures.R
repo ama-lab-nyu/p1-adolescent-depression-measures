@@ -84,6 +84,13 @@ cesd %>%
   head(10)
 
 # 19-item full modified CES-D scale
+# COMMENT (Roph):
+# The four positive-affect items (H1FS4, H1FS8, H1FS11, and H1FS15)
+# are reverse-coded above, but the current rowSums() statement still uses
+# the original H1FS1:H1FS19 variables. Please replace the original versions
+# of these four items with H1FS4_rev, H1FS8_rev, H1FS11_rev, and H1FS15_rev
+# when calculating cesd_full_score so that higher scores consistently
+# represent greater depressive symptoms.
 cesd_full_score <- cesd %>%
   mutate(
     cesd_full_score = rowSums(across(H1FS1:H1FS19), na.rm = FALSE)
@@ -117,7 +124,7 @@ datapre <- datapre %>%
   )
 
 # QC
-summary(cesd_full_score$cesd_full_score)
+summary(cesd_full_score$cesd_full_score)  # Max value should be 51 once you address the above comment (Roph)
 summary(brief_screener_score$brief_screener_score)
 table(single_item_depression$single_item_depression, useNA = "ifany")
 
