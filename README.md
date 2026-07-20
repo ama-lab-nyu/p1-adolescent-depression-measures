@@ -40,7 +40,7 @@ The analysis will be organized into numbered R scripts. Scripts should be run in
 
 ![Analysis Workflow](./outputs/figures/analysis_workflow.png)
 
-Additional scripts may be added if needed, but the main analysis should follow this numbered workflow. Individual scripts from the analysis team should end in `_First&Lastnameinitials`, for example, `01_construct_measures_RO.R` tells me this is Rophence's script. After reconciling all analytic differences, syntax will be updated in the above scripts.
+Additional scripts may be added if needed, but the main analysis should follow this numbered workflow. Individual scripts from the analysis team should end in `_First&Lastnameinitials`, for example, `01_construct_measures_RO.R` implies Rophence's script. After reconciling all analytic differences, syntax will be updated in the above scripts.
 
 ## R Version and Package Dependencies
 
