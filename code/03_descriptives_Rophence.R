@@ -360,7 +360,7 @@ write_xlsx(
     reliability_summary = reliability_summary,
     alpha_if_item_deleted = alpha_if_item_deleted
   ),
-  "outputs/03_descriptives_outputs.xlsx"
+  "outputs/03_descriptives_outputs_RO.xlsx"
 )
 
 
@@ -640,7 +640,7 @@ write_xlsx(
     binary_value_check = binary_value_check,
     threshold_sample_size_check = threshold_sample_size_check
   ),
-  "outputs/03_classification_threshold_outputs.xlsx"
+  "outputs/03_classification_threshold_outputs_RO.xlsx"
 )
 
 

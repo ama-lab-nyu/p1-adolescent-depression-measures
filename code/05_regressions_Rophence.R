@@ -859,7 +859,7 @@ write_xlsx(
     logistic_warning_diagnostics = logistic_warning_diagnostics,
     separation_diagnostics = separation_diagnostics
   ),
-  "outputs/05_regression_outputs.xlsx"
+  "outputs/05_regression_outputs_RO.xlsx"
 )
 
 

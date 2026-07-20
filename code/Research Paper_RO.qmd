@@ -1,0 +1,453 @@
+---
+title: "Three Measures, One Construct? Comparing Full, Brief, and Single-Item Depression Assessments in Add Health"
+editor: visual
+fontsize: 12pt
+linestretch: 1
+geometry: top=1.0cm, bottom=1.0cm, left=1.0cm, right=1.0cm
+
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{amsmath}
+        \usepackage{fvextra}
+        \usepackage{pdflscape}
+        \usepackage{setspace}
+        \usepackage{enumitem}
+        \usepackage{microtype}
+        \usepackage{titling}
+
+        \setlength{\droptitle}{-4em}
+        \pretitle{\begin{center}\Large\bfseries}
+        \posttitle{\end{center}\vspace{-1.5em}}
+        \preauthor{\begin{center}\normalsize}
+        \postauthor{\end{center}\vspace{-2em}}
+        \predate{}
+        \postdate{}
+
+        \singlespacing
+        \emergencystretch=3em
+
+        \setlist[itemize]{
+          itemsep=0.5\baselineskip,
+          topsep=0.5\baselineskip,
+          parsep=0pt,
+          partopsep=0pt
+        }
+
+        \setlist[enumerate]{
+          itemsep=0.5\baselineskip,
+          topsep=0.5\baselineskip,
+          parsep=0pt,
+          partopsep=0pt
+        }
+
+        \fvset{
+          breaklines=true,
+          breakanywhere=true,
+          breaksymbolleft={},
+          breaksymbolright={},
+          fontsize=\small
+        }
+
+        \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+          breaklines=true,
+          breakanywhere=true,
+          fontsize=\small
+        }
+
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+          breaklines=true,
+          breakanywhere=true,
+          commandchars=\\\{\},
+          fontsize=\small
+        }
+
+csl: apa-numeric-superscript-brackets.csl
+bibliography: references.bib
+link-citations: true
+
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## Abstract {.unnumbered}
+
+**Background:** Depressive symptoms in population surveys may be operationalized using full multi-item scales, brief screeners, or single symptom items. These alternatives are often treated as interchangeable measures of the same construct, although they differ in symptom coverage and score resolution. We evaluated whether alternative depressive-symptom operationalizations changed empirical conclusions when applied to the same adolescents and analytic models.
+
+**Methods:** We analyzed public-use Wave I data from the National Longitudinal Study of Adolescent to Adult Health. The complete-case analytic sample included 5,992 adolescents. Depressive symptoms were represented using a 19-item modified Center for Epidemiologic Studies Depression Scale (CES-D), a four-item affective screener, and a single depressed-mood item. We compared score distributions, internal consistency, demographic subgroup patterns, adjusted associations, and elevated-distress classifications. Elevated distress was defined using the observed score at the empirical 80th percentile of each measure, with all respondents tied at the cutoff included.
+
+**Results:** Cronbach’s alpha was 0.863 for the full scale and 0.816 for the four-item screener. The percentages classified as elevated were 22.0%, 30.5%, and 37.6% for the full, brief, and single-item measures, respectively. Overall, 24.8% of adolescents received mixed classifications across the three measures. Pairwise Cohen’s kappa values were 0.619 for the full versus brief comparison, 0.495 for the full versus single-item comparison, and 0.713 for the brief versus single-item comparison. Associations with gender, resident-parent education, school connectedness, and age were generally stable, whereas associations involving Hispanic ethnicity, non-Hispanic American Indian or Alaska Native identity, living with neither parent, and peer support weakened as the outcome was narrowed. The proportion of variation explained by the continuous models declined from 18.3% for the full scale to 11.9% for the brief screener and 8.7% for the single item.
+
+**Conclusions:** Reasonable depressive-symptom operationalizations applied to the same data produced different classifications and adjusted associations. Measurement selection should therefore be treated as an analytic decision, matched to the intended construct and examined through sensitivity analyses when multiple defensible definitions are available.
+
+**Keywords:** adolescent depression; CES-D; measurement sensitivity; brief screener; single-item measure; Add Health
+
+\newpage
+
+
+## Introduction
+
+In 2021, 20.1% of United States (U.S.) adolescents aged 12–17 experienced a major depressive episode, and in 2023, 40% of high school students reported persistent sadness or hopelessness [@nimh2021; @cdc2024]. Adolescent depression is associated with impaired academic, social, and physical functioning, increased suicide risk, and recurrent depression in adulthood [@jaycox2009; @johnson2018]. Population surveys are therefore important for estimating the prevalence of depressive symptoms, identifying adolescents with elevated distress, and examining social and demographic correlates. However, these surveys may operationalize depressive symptoms using full scales, brief screeners, or single symptom items. Because these approaches retain different amounts and types of symptom information, the choice of measure may influence both who is identified as distressed and the substantive conclusions drawn from the data. The Center for Epidemiologic Studies Depression Scale (CES-D) was developed by Radloff in 1977 as a 20-item self-report measure for assessing depressive symptoms in community populations [@radloff1977]. The original scale assessed symptoms experienced during the previous week across four related domains: depressed affect, somatic or retarded activity, positive affect, and interpersonal difficulties. The CES-D was subsequently applied and evaluated in adolescent populations, where it generally demonstrated good reliability but also showed variation in factor structure and item performance across samples and demographic groups [@roberts1990; @garrison1991; @blodgett2021]. The National Longitudinal Study of Adolescent to Adult Health (Add Health) administered a modified 19-item CES-D-based Feelings Scale during Wave I, which has been used extensively in research on adolescent mental health [@harry2018].
+
+Although full scales provide broad symptom coverage, brief scales are often used when questionnaire space and respondent time are limited. A screener restricted to feeling depressed, sad, lonely, or unable to shake off the blues primarily captures affective symptoms and excludes much of the somatic, positive-affect, and interpersonal content represented in the full CES-D. Evidence from adolescent samples indicates that the psychometric performance of shortened measures depends on the items selected, response format, study population, and intended use. An eight-item CES-D administered to Chinese adolescents supported correlated negative-symptom and diminished-happiness factors and demonstrated measurement invariance across gender and over two years [@liu2023]. In contrast, a Danish four-item CES-DC showed low internal consistency, weak test–retest reliability, and substantial measurement error despite acceptable fit for a one-factor model [@sorensen2022]. Similarly, a six-item adolescent distress scale was better represented by correlated somatic, depressive, and anxiety dimensions than by a single factor [@brunet2014]. These findings suggest that brief measures may not function simply as less precise versions of longer scales; they may represent narrower or partly different symptom constructs. A single-item scale represents the most abbreviated measurement approach. Among adults, the single CES-D item “I felt depressed” predicted subsequent mortality [@lefevre2012], and single-item self-rated mental health measures have shown moderate associations with longer instruments and several health outcomes [@ahmad2014]. Among young adolescents, however, one- and two-item depression screens demonstrated lower diagnostic discrimination than a 13-item measure, even when they remained potentially useful for initial case finding [@rhew2010]. Thus, a single depressed-mood item may provide meaningful information without representing the broader depressive-symptom construct or reproducing the classification behavior of a multidomain scale.
+
+Previous studies have primarily evaluated the reliability, validity, or agreement of individual depression measures or have selected a single operationalization for substantive analysis [@lehrer2006; @frisco2009; @kulchar2024]. Less is known about whether substituting one operationalization for another changes empirical findings when the underlying data, analytic sample, predictors, and models are held constant. This question aligns with multiverse and specification-curve research showing that different analytic choices can yield different conclusions from the same data [@steegen2016; @simonsohn2020; @kummerfeld2023]. Using Add Health Wave I data, we compared a 19-item modified CES-D, a four-item affective screener, and a single depressed-mood item. We assessed whether measurement choice altered depressive-symptom distributions, elevated-distress classification, demographic subgroup patterns, and associations with sociodemographic and social factors. The aim was not to identify a clinically superior measure, but to determine how alternative operationalizations of adolescent depressive symptoms shape conclusions drawn from the same analytic sample.
+
+\newpage
+
+## Methods
+
+### Data source and study sample
+
+We analyzed data from the public-use Wave I In-Home Interview of Add Health, a longitudinal study that began with students in grades 7 through 12 in the U.S. during the 1994–1995 academic year [@harris2019]. The unit of analysis was the individual respondent. The starting public-use Wave I file contained 6,504 respondents. To isolate differences attributable to depressive-symptom measurement from differences in sample composition, we constructed a common complete-case sample for all analyses. Respondents were required to have complete information on gender, race/ethnicity, family structure, resident-parent education, school connectedness, peer social support, age, and all 19 depressive-symptom items. Because the four-item screener and single depressed-mood item were nested within the full 19-item measure, this restriction ensured that the same respondents contributed to every operationalization and model. Restrictions were applied sequentially and documented at each step. The final analytic sample included 5,992 respondents, retaining 92.13% of the starting public-use sample. The largest reductions resulted from missing resident-parent education information, which removed 359 respondents, and missing school-connectedness information, which removed 109 respondents. Overall, complete-case restriction removed 7.87% of the starting sample and therefore did not exceed the project’s prespecified 25% threshold for conducting an expanded missingness analysis. Complete-case analysis was used to preserve comparability across outcome definitions, not because missingness was assumed to be inconsequential. The validity of complete-case estimates depends on the missingness process and the presence of effect heterogeneity [@ross2020]. Accordingly, all findings were interpreted as descriptive comparisons within the observed complete-case sample. Primary analyses were unweighted and should not be interpreted as nationally representative prevalence estimates.
+
+### Depressive-symptom operationalizations
+
+All Wave I `H1FS` depressive-symptom items used a four-category response scale ranging from 0 (never or rarely) to 3 (most or all of the time). Responses coded as refused or “don’t know” were set to missing before scoring. Three depressive-symptom operationalizations were constructed. The **full 19-item modified CES-D Scale** was calculated by summing `H1FS1` through `H1FS19`. Four positively worded items; feeling as good as other people (`H1FS4`), feeling hopeful about the future (`H1FS8`), being happy (`H1FS11`), and enjoying life (`H1FS15`), were reverse-coded as \(3-\text{item response}\) so that higher scores consistently represented greater depressive symptomatology. The possible score range was 0–57. This operationalization retained content reflecting depressed affect, somatic or cognitive symptoms, diminished positive affect, and interpersonal difficulties. The **four-item affective screener** was calculated by summing four negative-affect items: feeling depressed (`H1FS6`), feeling sad (`H1FS16`), being unable to shake off the blues (`H1FS3`), and feeling lonely (`H1FS13`). The possible score range was 0–12. This measure was treated as a narrower affective operationalization rather than as a content-equivalent short form of the complete modified CES-D. The **single depressed-mood item** consisted of H1FS6, which asked how often the respondent felt depressed. The original 0–3 response was retained. For comparability with the two composite outcomes, the item was treated as a numeric outcome in the linear regression analysis. It was also dichotomized using the common classification procedure described below. Internal consistency was not calculated because a one-item measure does not contain multiple items whose covariance can be assessed.
+
+### Predictors and covariates
+
+The same predictors and covariates were included in every regression model. Gender was constructed from `BIO_SEX` and categorized as male or female, with male as the reference group. Race/ethnicity was represented by six mutually exclusive categories: non-Hispanic White, non-Hispanic Black, Hispanic, non-Hispanic American Indian or Alaska Native (NH-AI/AN), non-Hispanic Asian, and non-Hispanic multiracial. Respondents reporting Hispanic origin were classified as Hispanic regardless of reported race. Among respondents not classified as Hispanic, those identifying as American Indian or Alaska Native were classified as NH-AI/AN regardless of additional race selections. Respondents selecting more than one of the remaining race categories were classified as non-Hispanic multiracial; respondents selecting “other” alone were also included in that category. Non-Hispanic White was the reference group. The NH-AI/AN category was retained rather than combined with an “other” category, but estimates for this smaller subgroup need cautious interpretation.
+
+Highest resident-parent education was constructed from resident-mother education (`H1RM1`) and resident-father education (`H1RF1`). Because the original response codes were not numerically ordered by educational attainment, each parent’s response was first assigned to an ordered category. Codes 1, 2, and 10 were categorized as less than high school or no schooling; codes 3, 4, and 5 as high school, General Educational Development, or vocational schooling instead of high school; codes 6 and 7 as postsecondary vocational training or some college without a degree; and codes 8 and 9 as a college degree or postgraduate professional training. When valid information was available for both parents, the higher attainment category was retained. When information was available for only one resident parent, that parent’s education category was used. Less than high school was the reference group.
+
+Family structure was constructed from household-roster relationship variables `H1HR3A` through `H1HR3T`. The presence of a resident father or father figure was identified using relationship code 11, and the presence of a resident mother or mother figure was identified using relationship code 14. Respondents were categorized as living with two parents, mother only, father only, or neither parent. The neither-parent category included adolescents living with grandparents, foster parents, or other relatives. Two-parent households were the reference category. School connectedness was calculated as the mean of four items assessing whether respondents felt close to people at school (`H1ED19`), felt part of their school (`H1ED20`), were happy to be at their school (`H1ED22`), and felt safe at school (`H1ED24`). Each item used a response scale from 1 to 5. Special response codes were set to missing, and the mean was calculated from the available valid items. The items retained their original response direction; consequently, higher scores represented weaker school connectedness or greater disagreement with the positive school statements. Peer social support was measured using the single item `H1PR4`, which asked how much the respondent’s friends cared about them. Valid responses ranged from 1 to 5, with higher values indicating greater perceived peer support. Special response codes were set to missing. Age was calculated from the respondent’s interview month and year and birth month and year. Implausible ages outside the prespecified range of 10–25 years were set to missing. Age was modeled continuously.
+
+### Descriptive and internal-consistency analyses
+
+For each depressive-symptom operationalization, we calculated the number of observations, mean, standard deviation, observed minimum and maximum, and score-frequency distribution. Histograms were used to evaluate distributional shape, score variability, and the increasing discreteness of the shorter measures. Outcomes were not transformed because transforming only selected operationalizations would have undermined the controlled measurement comparison. Internal consistency was assessed for the full 19-item modified CES-D and the four-item affective screener using Cronbach’s alpha [@cronbach1951]. We also calculated alpha after deletion of each item to identify whether removing any individual item would meaningfully increase internal consistency. Cronbach’s alpha was interpreted as a descriptive index of inter-item covariance rather than as evidence that a measure was unidimensional or more valid than another measure [@raykov1997]. Internal consistency was not applicable to the single-item outcome. Confirmatory factor analysis, exploratory factor analysis, test–retest reliability, measurement-invariance testing, diagnostic-accuracy analysis, and criterion-validity analysis were not conducted. These analyses were outside the applied measurement-sensitivity scope of the project and were not supported by the single Wave I measurement occasion and absence of a concurrent clinical reference standard.
+
+### Elevated-distress classification
+
+Each operationalization was dichotomized into elevated versus not elevated distress using the same prespecified procedure. For each measure, the cutoff was defined as the observed score corresponding to the empirical 80th percentile in the locked analytic sample. The percentile was calculated using an empirical observed-score quantile rule. Every respondent whose score was equal to or greater than the cutoff was included in the elevated-distress category. The percentile rule was applied separately to each score distribution while holding the analytic sample and threshold-construction procedure constant. Because the measures had different numbers of possible score values, the cutoffs produced different numbers of tied respondents. All ties at the threshold were retained as elevated, even when this resulted in more than 20% of the sample being classified as elevated. This was considered a substantive consequence of score discreteness rather than a problem to be corrected after observing the results. The resulting classifications were used only for comparative analysis. They were not treated as validated diagnostic cutoffs and do not identify major depressive disorder or another clinical condition.
+
+### Classification agreement and reclassification
+
+We first summarized the number and proportion of respondents classified as elevated under each operationalization. Overall overlap was described using the number of respondents classified as elevated on none, exactly one, exactly two, or all three measures. Pairwise classification agreement was evaluated for the full versus four-item, full versus single-item, and four-item versus single-item comparisons. For each pair, we calculated observed agreement and Cohen’s kappa [@cohen1960]. Kappa was described using the conventional Landis–Koch categories of poor, fair, moderate, substantial, and near-perfect agreement [@landis1977]. Because kappa is influenced by the marginal frequency of each classification, it was interpreted together with observed agreement and the underlying cell counts. A \(2 \times 2\) reclassification table was constructed for each pair of measures. These tables reported the numbers classified as elevated by both measures, by neither measure, by the longer measure only, and by the shorter measure only. The direction of disagreement was emphasized to distinguish between two possibilities: shorter measures identifying a substantially different group of respondents or shorter measures retaining a shared elevated-distress group while adding a larger group not identified by the longer measure.
+
+### Demographic subgroup comparisons
+
+For gender and race/ethnicity, we calculated mean continuous symptom scores and proportions classified as elevated under each operationalization. The purpose of these comparisons was to determine whether the direction and magnitude of demographic patterns changed when depressive symptoms were operationalized differently. Subgroup results were descriptive and were not interpreted as evidence of causal effects, clinical disparities, or measurement invariance across demographic groups. Because the three continuous measures had different possible ranges, raw mean scores were presented separately for each operationalization rather than directly compared across scales. Elevated-distress proportions were reported on a common percentage scale. Estimates for the smaller NH-AI/AN and non-Hispanic multiracial groups were interpreted descriptively.
+
+### Regression analyses
+
+We fit three ordinary least-squares regression models using the continuous depressive-symptom outcomes and three logistic regression models using the binary elevated-distress outcomes. Every model included gender, race/ethnicity, resident-parent education, family structure, school connectedness, peer social support, and age. The analytic sample and model specification were held constant across operationalizations. For each continuous outcome, both unstandardized and standardized linear regression models were estimated. In the standardized models, the outcome and each continuous predictor; school connectedness, peer social support, and age, were converted to standard-deviation units. Coefficients for continuous predictors therefore represented the expected difference in outcome standard deviations associated with a one-standard-deviation increase in the predictor. Coefficients for categorical predictors represented differences in outcome standard deviations relative to the corresponding reference group. Standardized coefficients were used for the primary cross-operationalization comparison because the three outcomes had different score ranges. The single depressed-mood item was treated as a numeric 0–3 outcome in the ordinary least-squares model to maintain the same model form across all continuous operationalizations. This treatment assumes approximately equal spacing between adjacent response categories and was used as a comparative modeling decision rather than as a claim that the item was intrinsically continuous. Logistic regression models used the original, unstandardized predictor scales and were summarized using odds ratios and 95% Wald confidence intervals. Odds ratios for school connectedness, peer support, and age therefore represented associations per one-unit increase in the original predictor scale, not per standard deviation. Comparisons across operationalizations were descriptive. We examined whether coefficient directions, magnitudes, confidence intervals, and conventional statistical significance were stable or sensitive to the outcome definition. We did not conduct formal hypothesis tests comparing coefficients across models.
+
+### Model diagnostics and software
+
+Multicollinearity was assessed using column-specific variance inflation factors derived from the model matrix. A variance inflation factor greater than 5 was prespecified as indicating potential concern. Logistic-model convergence status and numerical warnings were reviewed. Categorical predictor levels were also screened for zero-event or zero-nonevent cells as indicators of possible complete separation. All primary analyses were unweighted. Survey design weights and cluster variables were not incorporated into the current models; therefore, the findings describe the complete-case public-use sample rather than design-based national estimates. Survey-weighted replication may be considered in future sensitivity analyses.Analyses were performed in R using the `tidyverse` for data management, `psych`  for reliability and Cohen’s kappa, `broom` for regression-output extraction, `ggplot2` for figures, and `writexl` for exporting tabular results. All confidence intervals were calculated using Wald methods, and all figures were exported as 300-dots-per-inch PNG files.
+
+
+
+## Results
+
+### Descriptive statistics and reliability
+
+Of the 6,504 adolescents in the starting dataset, 5,992 were retained in the complete-case analytic sample, corresponding to 92.1% of the original sample. The same 5,992 adolescents were included in every descriptive, subgroup, agreement, and regression analysis. The analytic sample included 3,083 females (51.5%) and 2,909 males (48.5%). Participants were 58.6% non-Hispanic White, 22.1% non-Hispanic Black, 10.9% Hispanic, 3.2% non-Hispanic Asian, 2.7% non-Hispanic American Indian or Alaska Native, and 2.5% non-Hispanic multiracial, see Table 1. 
+
+
+```{r}
+#| label: tbl-sample-characteristics
+#| tbl-cap: "Characteristics of the analytic sample"
+#| cap-location: top
+#| echo: false
+#| message: false
+#| warning: false
+
+library(gtsummary)
+library(gt)
+library(dplyr)
+
+table1 <- readRDS(
+  "data/addhealth_analytic_sample_thresholded.rds"
+) %>%
+  select(
+    age,
+    gender,
+    race_eth,
+    resident_parent_education,
+    family_structure,
+    school_connectedness,
+    peer_support,
+    cesd_full_score,
+    cesd_brief_score,
+    cesd_single_depressed_ord
+  ) %>%
+  tbl_summary(
+    statistic = list(
+      all_continuous() ~ "{mean} ({sd})",
+      all_categorical() ~ "{n} ({p}%)"
+    ),
+    digits = list(
+      all_continuous() ~ 2,
+      all_categorical() ~ c(0, 1)
+    ),
+    label = list(
+      age ~ "Age, years",
+      gender ~ "Gender",
+      race_eth ~ "Race/ethnicity",
+      resident_parent_education ~
+        "Highest resident-parent education",
+      family_structure ~ "Family structure",
+      school_connectedness ~
+        "School connectedness score",
+      peer_support ~
+        "Peer social support score",
+      cesd_full_score ~
+        "Full 19-item modified CES-D score",
+      cesd_brief_score ~
+        "Four-item affective screener score",
+      cesd_single_depressed_ord ~
+        "Single depressed-mood item"
+    ),
+    missing = "no"
+  ) %>%
+  modify_header(
+    label = "**Characteristic**",
+    all_stat_cols() ~ "**Overall, N = {N}**"
+  ) %>%
+  bold_labels()
+
+table1 %>%
+  as_gt() %>%
+  gt::tab_source_note(
+    gt::md(
+      paste(
+        "*Note.* Values are mean (SD) for continuous variables and",
+        "n (%) for categorical variables. Higher school-connectedness",
+        "scores indicate weaker connectedness.",
+        "CES-D = Center for Epidemiologic Studies Depression Scale."
+      )
+    )
+  ) %>%
+  gt::tab_options(
+    table.font.size = gt::px(9),
+    data_row.padding = gt::px(2),
+    table.width = gt::pct(100)
+  )
+```
+
+
+All three depressive-symptom measures were right-skewed, but their score distributions became progressively more concentrated as the number of items decreased (Figure 1). The full 19-item modified CES-D Scale had a mean of 10.73 (SD = 7.42) and an observed range of 0–50. The four-item affective screener had a mean of 1.87 (SD = 2.25) and covered its full possible range of 0–12. The single depressed-mood item had a mean of 0.50 (SD = 0.74) and ranged from 0 to 3. Whereas only 2.3% of adolescents scored zero on the full scale, 37.7% scored zero on the four-item screener and 62.4% reported no depressed mood on the single item, illustrating the substantial reduction in score variability associated with the shorter operationalizations.
+
+![Distribution of the full 19-item modified CES-D, four-item affective screener, and single depressed-mood item in the common analytic sample (N = 5,992).](outputs/figures/figure1_distribution_depressive_symptom_measures.png){width="100%"}
+
+
+
+```{=latex}
+\begin{table}[!htbp]
+\centering
+\begin{singlespace}
+\caption{Descriptive characteristics, reliability, and classification thresholds}
+\label{tab:measure-summary}
+
+\small
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.20}
+
+\begin{tabular}{p{3.0cm}cccccc}
+\hline
+\textbf{Measure} &
+\textbf{Items (range)} &
+\textbf{Mean (SD)} &
+\textbf{Cronbach's $\alpha$} &
+\textbf{Cutoff} &
+\textbf{Tied, n} &
+\textbf{Elevated, n (\%)} \\
+\hline
+
+Full 19-item modified CES-D &
+19 (0--57) &
+10.73 (7.42) &
+.863 &
+$\geq 16$ &
+170 &
+1,319 (22.0) \\
+
+Four-item affective screener &
+4 (0--12) &
+1.87 (2.25) &
+.816 &
+$\geq 3$ &
+642 &
+1,828 (30.5) \\
+
+Single depressed-mood item &
+1 (0--3) &
+0.50 (0.74) &
+Not applicable &
+$\geq 1$ &
+1,685 &
+2,252 (37.6) \\
+
+\hline
+\end{tabular}
+
+\vspace{0.5em}
+
+\begin{minipage}{0.96\textwidth}
+\footnotesize
+\textit{Note.} Cutoffs were defined as the observed score at the empirical
+80th percentile of each measure in the locked analytic sample. All adolescents
+tied at the cutoff were included in the elevated-distress category. These
+thresholds were used for measurement comparison and should not be interpreted
+as clinical diagnostic cutoffs.
+\end{minipage}
+
+\end{singlespace}
+\end{table}
+```
+
+
+Internal consistency was high for the full modified CES-D (Cronbach’s $\alpha = 0.863$) and the four-item screener $\alpha = 0.816$). Removing any individual item did not increase alpha by more than .02 for either measure. Internal consistency was not calculated for the single-item measure because it contains only one observed item, see Table 2.
+
+### Elevated-distress classification and agreement
+
+Applying the same empirical 80th-percentile rule to each score distribution produced substantially different percentages classified as having elevated distress (Figure 2). The full modified CES-D classified 22.0% of adolescents as elevated, compared with 30.5% for the four-item screener and 37.6% for the single depressed-mood item. Thus, the percentage classified as elevated was 8.5 percentage points higher with the brief screener and 15.6 percentage points higher with the single item than with the full scale. The elevated percentages exceeded the nominal upper 20% because many adolescents were tied at the empirical cutoff. The number tied increased from 170 at the full-scale cutoff of 16 to 642 at the brief-screener cutoff of 3 and 1,685 at the single-item cutoff of 1. Consequently, the increasingly discrete score distributions of the shorter measures expanded the elevated category when all cutoff ties were retained. Across the three binary classifications, 3,445 adolescents (57.5%) were not elevated on any measure and 1,060 (17.7%) were elevated on all three. An additional 732 adolescents (12.2%) were elevated on exactly two measures, and 755 (12.6%) were elevated on exactly one. Therefore, 24.8% of the sample received a mixed classification across the three operationalizations.
+
+![Proportions classified as elevated and classification overlap across the three depressive-symptom operationalizations.](outputs/figures/figure2_prevalence_classification_overlap.png){width="100%"}
+
+\newpage
+
+Pairwise agreement was greatest between the four-item screener and the single item, with 87.0% observed agreement and a Cohen’s kappa of 0.713. Agreement between the full and four-item measures was 85.1% ($\kappa = 0.619$), whereas agreement between the full scale and the single item was lower at 78.3% ($\kappa = 0.495$), see Table 2. The measures were therefore related but not interchangeable for identifying adolescents with elevated distress. The direction of disagreement was markedly asymmetric. Compared with the full scale, the four-item screener classified 701 additional adolescents as elevated but did not identify 192 adolescents classified as elevated by the full scale. Similarly, the single item classified 1,118 additional adolescents as elevated while failing to identify 185 adolescents classified as elevated by the full scale. Thus, the shorter measures primarily identified the high-distress group detected by the full scale plus a substantially larger additional group, rather than identifying entirely different groups of comparable size.
+
+**Table 2. Pairwise classification agreement and reclassification**
+
+| Comparison | Observed agreement | Cohen’s $\kappa$ | Elevated by both, n (%) | Shorter measure only, n (%) | Longer measure only, n (%) |
+|---|---:|---:|---:|---:|---:|
+| Full scale vs four-item screener | 85.1% | 0.619 | 1,127 (18.8) | 701 (11.7) | 192 (3.2) |
+| Full scale vs single item | 78.3% | 0.495 | 1,134 (18.9) | 1,118 (18.7) | 185 (3.1) |
+| Four-item screener vs single item | 87.0% | 0.713 | 1,651 (27.6) | 601 (10.0) | 177 (3.0) |
+
+
+### Subgroup comparisons
+
+Females had higher mean scores and higher percentages classified as elevated than males under every operationalization (Figures 3 and 4). The female–male difference in elevated classification was 9.4 percentage points for the full scale (26.6% vs 17.2%), 13.5 points for the four-item screener (37.1% vs 23.6%), and 12.3 points for the single item (43.6% vs 31.3%). Thus, the direction of the gender difference was stable, but its estimated magnitude depended on the measure.
+
+Race and ethnicity patterns were also broadly consistent but not identical. Non-Hispanic White adolescents had the lowest mean score and the lowest elevated-distress percentage under all three operationalizations. Non-Hispanic Asian adolescents had the highest mean on the full scale (13.19) and single item (0.64) and the highest elevated percentage under all three classifications: 34.4% for the full scale, 42.9% for the brief screener, and 47.1% for the single item. On the brief continuous score, the means for non-Hispanic American Indian or Alaska Native and non-Hispanic Asian adolescents were nearly identical (2.34 and 2.32, respectively).
+
+The range between the highest and lowest racial or ethnic elevated-distress percentages was 15.7 percentage points for the full scale, 15.5 points for the four-item screener, and 11.5 points for the single item. The narrower single-item operationalization therefore compressed some of the observed between-group variation. Estimates for the non-Hispanic American Indian or Alaska Native ($n = 161$) and non-Hispanic multiracial ($n = 152$) groups should be interpreted descriptively because of their smaller sample sizes.
+
+![Mean depressive-symptom scores by gender and race/ethnicity across measurement approaches.](outputs/figures/figure3a_mean_scores_by_subgroup.png){width="100%"}
+
+![Proportions classified as having elevated distress by gender and race/ethnicity across measurement approaches.](outputs/figures/figure3b_prevalence_by_subgroup.png){width="100%"}
+
+
+
+### Regression models
+
+All regression models used the same 5,992 adolescents and an identical predictor set. All variance inflation factors were below 3.34, indicating no severe multicollinearity under the prespecified threshold of 5. All logistic models converged without warnings, and no categorical predictor level exhibited complete separation. The explanatory performance of the continuous models declined as the depressive-symptom measure became narrower. The adjusted predictor set explained 18.3% of the variation in the full modified CES-D, 11.9% in the four-item screener, and 8.7% in the single depressed-mood item. This represented a reduction of more than one-half in explained variation from the full scale to the single item. Several adjusted associations were directionally consistent across all three continuous outcomes (Figure 5). **Females** had higher standardized depressive-symptom scores than males under the full scale ($\beta = 0.262$, 95% CI [0.215, 0.309]), four-item screener ($\beta = 0.341$, 95% CI [0.292, 0.389]), and single item ($\beta = 0.276$, 95% CI [0.227, 0.325]). **Non-Hispanic Asian** adolescents also had higher scores than non-Hispanic White adolescents across the full scale ($\beta = 0.430$, 95% CI [0.297, 0.563]), brief screener ($\beta = 0.281$, 95% CI [0.143, 0.419]), and single item ($\beta = .248$, 95% CI [0.107, 0.388]). Higher scores on the school measure represented weaker school connectedness because the original item direction was retained. Weaker **connectedness** was associated with higher depressive-symptom scores for the full scale ($\beta = 0.295$, 95% CI [0.271, 0.318]), four-item screener ($\beta = 0.225$, 95% CI [0.200, 0.250]), and single item ($\beta = 0.199$, 95% CI [0.174, 0.224]). Older age, residence in mother-only or father-only households, and higher resident-parent education also showed generally consistent directions across measures, although effect magnitudes varied.
+
+![Standardized linear regression coefficients and 95% confidence intervals across depressive-symptom operationalizations.](outputs/figures/figure4a_linear_standardized_coefficients.png){width="100%"}
+
+Other associations were more sensitive to the outcome operationalization. Compared with non-Hispanic White adolescents, **Hispanic** adolescents had higher scores on the full scale ($\beta = 0.170$, 95% CI [0.091, 0.249]) and four-item screener ($\beta = 0.106$, 95% CI [0.024, 0.188]), but the association was attenuated and no longer statistically distinguishable from zero for the single item ($\beta = .047$, 95% CI [−0.036, 0.131]). A similar pattern was observed for **non-Hispanic American Indian or Alaska Native** adolescents: coefficients were positive for the full scale ($\beta = 0.153$, 95% CI [0.010, 0.297]) and brief screener ($\beta = 0.172$, 95% CI [0.024, 0.321]) but smaller and imprecise for the single item ($\beta = 0.056$, 95% CI [−0.095, 0.208]). **Living with neither parent** was associated with higher scores on the full scale ($\beta = 0.151$, 95% CI [0.023, 0.279]) and brief screener ($\beta = 0.161$, 95% CI [0.028, 0.293]), but not on the single item ($\beta = 0.050$, 95% CI [−0.085, 0.185]). **Peer social support** exhibited one of the clearest changes across operationalizations. A one-standard-deviation increase in peer support was associated with lower full-scale symptoms ($\beta = -0.119$, 95% CI [−0.143, −0.095]), but the association was substantially smaller for the four-item screener ($\beta = -0.033$, 95% CI [−0.058, −0.008]) and was not statistically distinguishable from zero for the single item ($\beta = -0.016$, 95% CI [−0.042, 0.009]).
+
+The logistic models yielded a similar distinction between stable and measurement-sensitive associations (Figure 6). **Female** adolescents had higher adjusted odds of elevated distress under the full scale (OR = 1.98, 95% CI [1.73, 2.27]), four-item screener (OR = 2.07, 95% CI [1.84, 2.33]), and single item (OR = 1.80, 95% CI [1.61, 2.01]). **Non-Hispanic Asian** identity and weaker **school connectedness** were also associated with elevated distress under all three classifications. For each one-unit increase in the weak-connectedness score, the odds ratios were 1.94 (95% CI [1.79, 2.11]) for the full scale, 1.61 (95% CI [1.50, 1.74]) for the brief screener, and 1.54 (95% CI [1.44, 1.65]) for the single item. In contrast, the association for **Hispanic ethnicity** declined from OR = 1.36 (95% CI [1.10, 1.68]) under the full-scale classification to OR = 1.27 (95% CI [1.04, 1.53]) under the brief classification and OR = 1.16 (95% CI [.96, 1.39]) under the single-item classification. The corresponding odds ratios for **non-Hispanic Black** adolescents were 1.20 (95% CI [1.02, 1.43]), 1.19 (95% CI [1.02, 1.38]), and .99 (95% CI [.86, 1.14]), respectively. **Living with neither parent** was associated with the full-scale classification (OR = 1.46, 95% CI [1.05, 2.03]) but not clearly with the brief (OR = 1.31, 95% CI [.97, 1.78]) or single-item classification (OR = 1.13, 95% CI [.84, 1.52]). **Peer support** remained inversely associated with all three binary outcomes, but its magnitude decreased from OR = 0.74 for the full scale to 0.89 for the brief screener and 0.92 for the single item.
+
+![Adjusted odds ratios and 95% confidence intervals for elevated distress across depressive-symptom operationalizations.](outputs/figures/figure4b_logistic_odds_ratios.png){width="100%"}
+
+\newpage
+
+## Discussion
+
+
+This study found that three operationalizations of adolescent depressive symptoms did not produce equivalent conclusions, even though the respondents, predictors, covariates, and analytic models were held constant. The full modified CES-D Scale, four-item affective screener, and single depressed-mood item identified a shared group of adolescents with elevated distress, but the shorter measures classified substantially broader groups and produced weaker associations for several social and demographic factors. Measurement choice therefore affected not only score precision but also the apparent burden, composition, and correlates of adolescent distress. The classification differences arose from both score structure and symptom content. Shorter measures had fewer possible score values, creating large groups of adolescents tied at the empirical threshold. Consequently, applying the same percentile-based classification rule did not yield similarly sized elevated groups. This illustrates an important limitation of using percentile cutoffs with highly discrete measures, an apparently uniform decision rule may operate very differently across instruments. The larger groups identified by the shorter measures should not be interpreted as false positives because no clinical reference standard was available. Rather, the single item identified adolescents who reported at least some depressed mood, whereas the full scale required symptoms to accumulate across a wider range of affective, somatic, positive-affect, and interpersonal content. The reclassification pattern suggests that the measures captured a common high-distress core while the shorter measures added a broader group with more limited or affect-focused symptoms. Nearly one quarter of adolescents received inconsistent classifications across the three measures. In applied research, this degree of disagreement could meaningfully affect estimates of service need, comparisons across populations, and conclusions about which adolescents should be considered at elevated risk. Researchers should therefore avoid assuming that a single depressed-mood item is simply a less precise substitute for a multidomain symptom scale.
+
+The regression findings similarly distinguished robust from measurement-sensitive associations. Gender, age, resident-parent education, family structure, and school connectedness showed generally consistent directions across operationalizations, suggesting that these patterns were not entirely dependent on how depressive symptoms were defined. In contrast, several racial and ethnic contrasts, the association with living with neither parent, and particularly the association with peer social support weakened as the outcome became narrower. Peer support may be related to a broader range of interpersonal and emotional symptoms represented in the full CES-D but less strongly related to the isolated experience of feeling depressed. This interpretation concerns differences in measured content and should not be treated as a causal explanation because the analyses were cross-sectional.
+
+The internal-consistency results do not contradict these findings. Both multi-item measures had high Cronbach’s alpha, but alpha reflects item covariance and does not establish that two measures assess the same construct or are equally appropriate for a particular purpose [@raykov1997]. A brief measure can have high internal consistency because its items are narrowly similar while still omitting important symptom domains. Prior research likewise indicates that the performance of abbreviated adolescent depression measures depends on item selection, response format, population, and intended application [@liu2023; @sorensen2022; @brunet2014].
+
+These findings support treating depressive-symptom operationalization as an explicit analytic decision. Researchers should first identify whether their intended outcome is broad depressive-symptom burden, affective distress, or depressed mood specifically. They should then consider whether the measure is intended for descriptive surveillance, individual screening, subgroup comparison, or etiologic research. When several operationalizations are available, a prespecified sensitivity analysis can show whether substantive conclusions depend on the selected definition, consistent with broader multiverse and specification-curve approaches [@steegen2016; @simonsohn2020; @kummerfeld2023].
+
+
+### Strengths and limitations
+
+A primary strength was the controlled comparison: every analysis used the same respondents, predictors, covariates, threshold procedure, and model specification. Differences could therefore be attributed more directly to the outcome operationalization rather than to changes in the analytic sample or adjustment set. Examining reclassification cells in addition to Cohen’s kappa also clarified the direction of disagreement between measures.
+
+Several limitations should be considered. First, the empirical 80th-percentile thresholds were comparative devices rather than validated clinical cutoffs. The study cannot determine which classification was clinically correct, calculate sensitivity or specificity, or diagnose major depressive disorder because no diagnostic reference standard was available. Previous adolescent studies have shown that cutoffs and the diagnostic performance of brief measures can vary across populations and instruments [@garrison1991; @rhew2010]. Second, the data and regression analyses were cross-sectional. Coefficients describe adjusted associations rather than causal effects. In addition, comparisons across outcome operationalizations were descriptive; no formal tests of coefficient differences were performed. Differences in conventional statistical significance should therefore not be interpreted as proof that the underlying associations were statistically different. Third, the analyses were unweighted and based on the Add Health Wave I public-use complete-case sample. The percentages reported here are sample descriptions rather than survey-weighted national estimates. The findings may not generalize to the full Add Health target population, contemporary adolescents, other age groups, or other depression instruments. A survey-weighted sensitivity analysis would be necessary before making design-based population claims.
+
+
+Fourth, complete-case restriction excluded 7.87% of the starting sample. Although this loss was modest and ensured that every comparison used identical respondents, complete-case estimates can still be biased when missingness is related to the outcomes or when associations differ between included and excluded respondents [@ross2020]. Fifth, the three operationalizations were structurally dependent. The single depressed-mood item was included in the four-item screener and full scale, and every brief-screener item was included in the full scale. Agreement therefore partly resulted from shared content and should not be interpreted as independent evidence of convergent validity. Sixth, the single depressed-mood item was treated as a numeric 0–3 outcome in the linear models to preserve a common model form. This assumes approximately equal spacing between adjacent response categories. An ordinal regression model could be considered as a sensitivity analysis, although it would no longer provide exactly the same model form as the two composite outcomes. Finally, subgroup differences should not be interpreted as evidence of measurement invariance. The study described whether observed group patterns changed across operationalizations but did not test whether item thresholds, loadings, or other measurement parameters were equivalent across gender or racial and ethnic groups. Previous research suggests that adolescent CES-D structure and item functioning can vary across populations [@blodgett2021; @harry2018].
+
+
+
+## Conclusion
+
+The full modified CES-D, four-item affective screener, and single depressed-mood item did not produce one invariant account of adolescent depressive symptoms. They identified a common high-distress group but differed substantially in score resolution, elevated-distress classification, subgroup contrasts, and several adjusted associations. These findings do not establish that longer measures are universally superior or that short measures are invalid. They show that operationalization is part of the analysis and can materially shape the conclusions drawn from the same data. Researchers should match the measure to the intended construct and use, avoid interpreting sample-relative thresholds as diagnoses, and report measurement-sensitivity analyses when more than one defensible operationalization is available.
+
+\newpage
+
+## References {.unnumbered}
+
+::: {#refs}
+:::
+
+
+\newpage
+
+## Appendix: Supplementary Tables and Analysis Code {.unnumbered}
+
+#### Supplementary Table S1. Complete-case sample flow
+
+```{=latex}
+\begin{center}
+\begin{singlespace}
+\scriptsize
+
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{0.95}
+
+\begin{tabular}{r p{6.2cm} r r r}
+\hline
+\textbf{Step} &
+\textbf{Restriction} &
+\textbf{N retained} &
+\textbf{Removed} &
+\textbf{\% retained} \\
+\hline
+
+0  & Starting Wave I public-use sample          & 6,504 & 0   & 100.00 \\
+1  & Complete gender                            & 6,503 & 1   & 99.98  \\
+2  & Complete race/ethnicity                    & 6,497 & 6   & 99.89  \\
+3  & Complete family structure                  & 6,497 & 0   & 99.89  \\
+4  & Complete resident-parent education         & 6,138 & 359 & 94.37  \\
+5  & Complete school-connectedness score        & 6,029 & 109 & 92.70  \\
+6  & Complete peer social support               & 6,013 & 16  & 92.45  \\
+7  & Complete age                               & 6,013 & 0   & 92.45  \\
+8  & Complete 19-item modified CES-D             & 5,992 & 21  & 92.13  \\
+
+\hline
+\end{tabular}
+
+\end{singlespace}
+\end{center}
+
+\noindent\footnotesize\textit{Note.}
+The four-item screener and single depressed-mood item were nested within the
+19-item modified CES-D; therefore, they introduced no additional exclusions
+after complete full-scale data were required.
+\normalsize
+```
+
+#### Supplementary Table S2. Elevated-distress proportions by gender and race/ethnicity
+
+| Group | Full 19-item, % | Four-item, % | Single item, % |
+|---|---:|---:|---:|
+| Female | 26.57 | 37.07 | 43.56 |
+| Male | 17.19 | 23.55 | 31.25 |
+| Hispanic | 28.44 | 36.24 | 43.58 |
+| NH-AI/AN | 27.33 | 36.02 | 40.99 |
+| NH-Asian | 34.39 | 42.86 | 47.09 |
+| NH-Black | 25.09 | 33.48 | 37.87 |
+| NH-Multiracial | 23.03 | 30.26 | 38.82 |
+| NH-White | 18.70 | 27.41 | 35.64 |
+
+*Note.* NH-AI/AN = non-Hispanic American Indian/Alaska Native. These are sample-relative classifications, not clinical prevalence estimates.
+
+## Code Syntax
+
+The syntax and data that reproduces the complete data-management, statistical
+analysis, figure-generation, and manuscript table 1, for this study are attached as separate files in the submission folder.

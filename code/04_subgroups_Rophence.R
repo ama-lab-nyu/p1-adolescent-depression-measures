@@ -405,7 +405,7 @@ write_xlsx(
     continuous_disparity_summary = continuous_disparity_summary,
     prevalence_disparity_summary = prevalence_disparity_summary
   ),
-  "outputs/04_subgroup_comparisons_outputs.xlsx"
+  "outputs/04_subgroup_comparisons_outputs_RO.xlsx"
 )
 
 
