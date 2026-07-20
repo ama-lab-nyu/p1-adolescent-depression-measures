@@ -57,7 +57,7 @@ The analysis will be organized into numbered R scripts. Scripts should be run in
 | `05_regressions.R` | Fits linear and logistic regression models using the same predictor set across all measurement approaches. |
 | `06_agreement.R` | Calculates classification agreement across binary measures, including Cohen’s kappa and reclassification tables. |
 
-Additional scripts may be added if needed, but the main analysis should follow this numbered workflow.
+Additional scripts may be added if needed, but the main analysis should follow this numbered workflow. Individual scripts from the analysis team should end in `_First&Lastnameinitials`, for example, `01_construct_measures_RO.R` tells me this is Rophence's script. After reconciling all analytic differences, syntax will be updated in the above scripts.
 
 ## R Version and Package Dependencies
 
@@ -120,7 +120,7 @@ Any manual decisions, deviations from the planned workflow, or unresolved issues
 
 ## Project Status
 
-Current status: Repository setup and skeleton documentation.
+Current status: Analysis and Manuscript Writing cureently ongoing.
 
 The README will be updated as scripts, outputs, and manuscript materials are added.
 
