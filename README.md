@@ -1,4 +1,5 @@
 # Comparing Different Ways to Measure Adolescent Depression
+![Project overview](./outputs/figures/project_overview.png)
 
 ### Project Summary
 
@@ -23,14 +24,7 @@ Raw Add Health data are not stored in this repository. To reproduce the analysis
 
 ## Repository Structure
 
-This repository is organized to support a reproducible analysis workflow.
-
-| Folder | Description |
-|---|---|
-| `/data/` | Raw and processed data files, or instructions for obtaining Add Health data |
-| `/code/` | R scripts for data preparation, measure construction, and analysis |
-| `/outputs/` | Tables, figures, and summary statistics produced by the analysis |
-| `/docs/` | Project protocol, variable specifications, and manuscript drafts |
+![Repository Structure](./outputs/figures/repository_structure.png)
 
 The `/data/` folder should not contain restricted or private files. If raw Add Health data cannot be shared, the folder should include instructions for obtaining the data and placing files locally.
 
@@ -38,24 +32,13 @@ The `/data/` folder should not contain restricted or private files. If raw Add H
 
 This project compares three operationalizations of adolescent depressive symptoms.
 
-| Measure | Description |
-|---|---|
-| Full modified CES-D scale | Uses all modified CES-D depressive symptom items available in Add Health Wave I, with positive affect items reverse-coded before summing. |
-| Four-item brief screener | Uses a shorter set of depressive symptom items focused on core affective symptoms. |
-| Single-item indicator | Uses one depressive symptom item as the simplest operationalization of adolescent distress. |
+![Measures](./outputs/figures/measures.png)
 
 ## Analysis Workflow
 
 The analysis will be organized into numbered R scripts. Scripts should be run in order.
 
-| Script | Purpose |
-|---|---|
-| `01_construct_measures.R` | Constructs the full modified CES-D scale, four-item brief screener, and single-item depressive symptom measure. |
-| `02_build_sample.R` | Builds the complete-case analytic sample and documents the sample size at each restriction step. |
-| `03_descriptives.R` | Produces descriptive statistics, distribution plots, and reliability estimates for the depressive symptom measures. |
-| `04_subgroups.R` | Compares depressive symptom measures across key demographic subgroups, including gender and race/ethnicity. |
-| `05_regressions.R` | Fits linear and logistic regression models using the same predictor set across all measurement approaches. |
-| `06_agreement.R` | Calculates classification agreement across binary measures, including Cohen’s kappa and reclassification tables. |
+![Analysis Workflow](./outputs/figures/analysis_workflow.png)
 
 Additional scripts may be added if needed, but the main analysis should follow this numbered workflow. Individual scripts from the analysis team should end in `_First&Lastnameinitials`, for example, `01_construct_measures_RO.R` tells me this is Rophence's script. After reconciling all analytic differences, syntax will be updated in the above scripts.
 
@@ -120,7 +103,7 @@ Any manual decisions, deviations from the planned workflow, or unresolved issues
 
 ## Project Status
 
-Current status: Analysis and Manuscript Writing cureently ongoing.
+Current status: Analysis and Manuscript Writing currently ongoing.
 
 The README will be updated as scripts, outputs, and manuscript materials are added.
 
