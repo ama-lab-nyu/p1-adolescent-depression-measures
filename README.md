@@ -103,7 +103,7 @@ Any manual decisions, deviations from the planned workflow, or unresolved issues
 
 ## Project Status
 
-Current status: Analysis and Manuscript Writing cureently ongoing.
+Current status: Analysis and Manuscript Writing currently ongoing.
 
 The README will be updated as scripts, outputs, and manuscript materials are added.
 
